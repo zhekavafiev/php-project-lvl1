@@ -1,0 +1,9 @@
+{
+    "name": "evgvfv/project-one",
+    "type": "project",
+    "license": "no",
+    "require": {},
+    "bin": [
+		"bin/brain-games"
+]
+}
