@@ -1,7 +1,7 @@
 {
     "name": "evgvfv/php-project-lvl1",
     "description": "php-project-lvl1",
-    "license": "no",
+    "license": "MIT",
     "require": {},
     "bin": [
 		"./brain-games"
