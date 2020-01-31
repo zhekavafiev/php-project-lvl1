@@ -1,7 +1,0 @@
-{
-    "name": "evgvfv/php-project-lvl1",
-    "type": "project",
-    "license": "no",
-    "require": {},
-    "bin": ["bin/brain-games"]
-}
