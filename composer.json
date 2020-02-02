@@ -10,7 +10,10 @@
 	],
 
      "autoload":{
-     	 "files": []
+     	 "files": [
+         "src/cli.php",
+         "src/logika.php"
+       ]
       },
      "require-dev": {
         "squizlabs/php_codesniffer": "3.*"
