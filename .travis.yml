@@ -1,1 +1,7 @@
 language: php
+
+install:
+  - make install
+
+scripts:
+  - make lint
