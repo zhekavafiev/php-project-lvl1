@@ -1,6 +1,6 @@
 language: php
 
-install:
+before_install:
   - make install
 
 scripts:
