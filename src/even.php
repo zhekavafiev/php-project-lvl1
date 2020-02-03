@@ -1,7 +1,8 @@
 <?php
 
-namespace Src\Logika;
+namespace Src\Even;
 
+use function Src\Otvet;
 use function cli\prompt;
 use function cli\line;
 
@@ -17,17 +18,15 @@ function game()
         //line("Варианты ответов Yes, No");
         $otvet = prompt('');
         //print_r($number);
-        if ($number % 2 === 0 && $otvet === 'Yes') {
-            print_r('Все верно' . "\n");
-            $sum += 1;
-        } elseif ($number % 2 != 0 && $otvet === 'No') {
-            print_r('Все верно' . "\n");
-            $sum += 1;
+        if ($number % 2 === 0) {
+            $waitOtvet = 'Yes';
         } else {
-            print_r('Вот тут ты не прав' . "\n");
+            $waitOtvet = 'no';
         }
-    }
-    line('');
+        $sum += \Src\Otvet\result($otvet, $waitOtvet);
+    } //print_r($sum . "\n");
+}
+    /*line('');
     if ($sum == 2) {
         line("Неплохой результат");
     } elseif ($sum == 3) {
@@ -35,6 +34,6 @@ function game()
     } else {
         line("Так себе результатик");
     }
-}
+}*/
 
 //game();

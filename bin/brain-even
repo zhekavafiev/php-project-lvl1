@@ -11,7 +11,7 @@ if (file_exists($autoloadPath1)) {
 }
 
 use function Src\Cli;
-use function Src\Logika;
+use function Src\Even;
 
 \Src\Cli\run();
-\Src\Logika\game();
+\Src\Even\game();
