@@ -15,7 +15,8 @@
          "src/even.php",
          "src/otvet.php",
          "src/calc.php",
-         "src/gcd.php"
+         "src/gcd.php",
+         "src/progression.php"
        ]
       },
      "require-dev": {
