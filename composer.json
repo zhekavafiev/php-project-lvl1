@@ -6,7 +6,8 @@
         "wp-cli/php-cli-tools": "^0.11.11"
     },
     "bin": [
-		"bin/brain-even"
+		"./brain-even",
+    ",/brain-calc"
 	],
 
      "autoload":{
