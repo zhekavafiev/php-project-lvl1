@@ -2,15 +2,17 @@
 
 namespace Src\Otvet;
 
+use function Src\Cli;
 use function cli\line;
 
-function result($otvet, $waitOtvet)
+function result($otvet, $waitOtvet, $name)
 {
-    if ($otvet === $waitOtvet) {
-      line("И это прааавильный ответ!");
-      return 1;
+    //print_r($name);
+    if ($otvet == $waitOtvet) {
+        line("И это прааавильный ответ, {$name}!");
+        return 1;
     } else {
-      Line("Не верно, правильный ответ %s", $waitOtvet);
+        Line("Не верно, {$name}, правильный ответ %s!", $waitOtvet);
     }
     //print_r($sum);
     //return $sum;

@@ -13,7 +13,9 @@
      	 "files": [
          "src/cli.php",
          "src/even.php",
-         "src/otvet.php"
+         "src/otvet.php",
+         "src/calc.php",
+         "src/gcd.php"
        ]
       },
      "require-dev": {

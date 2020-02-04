@@ -6,9 +6,12 @@ use function Src\Otvet;
 use function cli\prompt;
 use function cli\line;
 
-function game()
+function game($name)
 {
+    line("В данной игре тебе будет необходимо определить четность числа, ничего сложного.");
     line("Варианты ответов должны быть Yes или No, все остальные варианты будут некорректны");
+    line("Начинаем!");
+
     $sum = 0;
 
     for ($i = 1; $i <= 3; $i++) {
@@ -23,17 +26,6 @@ function game()
         } else {
             $waitOtvet = 'no';
         }
-        $sum += \Src\Otvet\result($otvet, $waitOtvet);
+        $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
     } //print_r($sum . "\n");
 }
-    /*line('');
-    if ($sum == 2) {
-        line("Неплохой результат");
-    } elseif ($sum == 3) {
-        line("Ты просто гений");
-    } else {
-        line("Так себе результатик");
-    }
-}*/
-
-//game();
