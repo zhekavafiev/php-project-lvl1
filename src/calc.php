@@ -8,7 +8,7 @@ use function Src\Otvet;
 function calc($name)
 {
     print_r("В данной игре тебе будет необходимо вычислить резульат простыхматематических операций\n");
-    print_r("И так, поехали...\n");
+    print_r("И так, поехали\n");
     $sum = 0;
     $arrZnak = ['+', '-', '*'];
     for ($i = 1; $i <= 3; $i++) {
@@ -29,7 +29,7 @@ function calc($name)
             $waitOtvet = $num1 * $num2;
             $otvet = prompt('');
         } $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
-    } //print_r($sum);
+    } \Src\Otvet\close($sum, $name);//print_r($sum);
 }
 
  //calc();

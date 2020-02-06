@@ -6,7 +6,7 @@ use function Src\Otvet;
 use function cli\prompt;
 use function cli\line;
 
-function game($name)
+function even($name)
 {
     line("В данной игре тебе будет необходимо определить четность числа, ничего сложного.");
     line("Варианты ответов должны быть Yes или No, все остальные варианты будут некорректны");
@@ -27,5 +27,5 @@ function game($name)
             $waitOtvet = 'no';
         }
         $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
-    } //print_r($sum . "\n");
+    }   \Src\Otvet\close($sum, $name);//print_r($sum . "\n");
 }

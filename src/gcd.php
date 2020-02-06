@@ -25,7 +25,7 @@ function gcd($name)
 
         $otvet = prompt('');
         $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
-    } //print_r($sum);
+    } \Src\Otvet\close($sum, $name);//print_r($sum);
 }
 
 //gcd();
