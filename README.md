@@ -24,3 +24,4 @@
 
 brain-even
 https://asciinema.org/a/9OLQQhNh4w2iwCsr3wgjm7a27
+[![demo](https://asciinema.org/a/9OLQQhNh4w2iwCsr3wgjm7a27.svg)](https://asciinema.org/a/9OLQQhNh4w2iwCsr3wgjm7a27?autoplay=1)
