@@ -22,5 +22,17 @@
 
 ## Примеры использования
 
-brain-even
+### brain-even
 [![demo](https://asciinema.org/a/9OLQQhNh4w2iwCsr3wgjm7a27.svg)](https://asciinema.org/a/9OLQQhNh4w2iwCsr3wgjm7a27?autoplay=1)
+
+### Brain-calc
+[![demo](https://asciinema.org/a/z2x32wZTE2yazLWJTG1JHwyTm.svg)](https://asciinema.org/a/z2x32wZTE2yazLWJTG1JHwyTm?autoplay=1)
+
+### Brain-gcd
+[![demo](https://asciinema.org/a/1vuh0YhWTOK2sjQB24Ntdrk8c.svg)](https://asciinema.org/a/1vuh0YhWTOK2sjQB24Ntdrk8c?autoplay=1)
+
+### Brain-prime
+[![demo](https://asciinema.org/a/klDaDgcFWm6a3eqqwUNP3oBSy.svg)](https://asciinema.org/a/klDaDgcFWm6a3eqqwUNP3oBSy?autoplay=1)
+
+### Brain-progression
+[![demo](https://asciinema.org/a/ldMcXtsB39gMNpJZ0mztu7Zvo.svg)](https://asciinema.org/a/ldMcXtsB39gMNpJZ0mztu7Zvo?autoplay=1)
