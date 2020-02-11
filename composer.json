@@ -19,9 +19,10 @@
          "src/even.php",
          "src/otvet.php",
          "src/calc.php",
-         "src/gcd.php",
+         "src/gamesFunctions.php",
          "src/progression.php",
-         "src/prime.php"
+         "src/prime.php",
+         "games/gcd.php"
        ]
       },
      "require-dev": {
