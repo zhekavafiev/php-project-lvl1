@@ -69,12 +69,30 @@ function getAnswerProgression($question)
 
     for ($i = 1; $i <= 10; $i++) {
         $arr[] = $arr[$i - 1] + $step;
-      }
+    }
 
     $waitOtvet = $arr[$closeIndex];
     $arr[$closeIndex] = 'X';
     $str = implode($arr, ' ');
     line("{$question}. %s", $str);
     $otvet = prompt("Ваш вариант");
+    return [$otvet, $waitOtvet];
+}
+
+function getAnswerPrime($question)
+{
+    $result = [];
+    $num = rand(2, 100);
+    $samle = [1, $num];
+//print_r($num);
+    line("{$question}. {$num} является простым?");
+    $otvet = prompt('Ваш ответ');
+
+    for ($i = 1; $i <= $num; $i++) {
+        if ($num % $i === 0) {
+            $result[] = $i;
+        }
+    }
+    $result === $samle ? $waitOtvet = 'Yes' : $waitOtvet = 'No';
     return [$otvet, $waitOtvet];
 }
