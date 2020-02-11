@@ -20,7 +20,7 @@
          "src/otvet.php",
          "games/calc.php",
          "src/gamesFunctions.php",
-         "src/progression.php",
+         "games/progression.php",
          "src/prime.php",
          "games/gcd.php"
        ]

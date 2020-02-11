@@ -11,8 +11,7 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use function Src\Progression;
+use function Games\Progression;
 use function Src\Cli;
 
-$name = \Src\Cli\run();
-\Src\Progression\progression($name);
+\Games\Progression\progressionRun();

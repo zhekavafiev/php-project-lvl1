@@ -59,3 +59,22 @@ function getAnswerEven($question)
         $waitOtvet = 'No';
     } return [$otvet, $waitOtvet];
 }
+
+function getAnswerProgression($question)
+{
+    $arr = [];
+    $arr[0] = rand(1, 5);
+    $step = rand(1, 5);
+    $closeIndex = rand(0, 9);
+
+    for ($i = 1; $i <= 10; $i++) {
+        $arr[] = $arr[$i - 1] + $step;
+      }
+
+    $waitOtvet = $arr[$closeIndex];
+    $arr[$closeIndex] = 'X';
+    $str = implode($arr, ' ');
+    line("{$question}. %s", $str);
+    $otvet = prompt("Ваш вариант");
+    return [$otvet, $waitOtvet];
+}
