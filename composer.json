@@ -18,7 +18,7 @@
          "src/cli.php",
          "src/even.php",
          "src/otvet.php",
-         "src/calc.php",
+         "games/calc.php",
          "src/gamesFunctions.php",
          "src/progression.php",
          "src/prime.php",

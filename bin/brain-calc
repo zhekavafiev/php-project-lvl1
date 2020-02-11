@@ -12,7 +12,5 @@ if (file_exists($autoloadPath1)) {
 }
 
 use function Src\Calc;
-use function Src\Cli;
 
-$name = \Src\Cli\run();
-\Src\Calc\calc($name);
+Games\Calc\calcRun();
