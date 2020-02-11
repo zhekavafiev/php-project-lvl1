@@ -10,8 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use function Src\Cli;
-use function Src\Even;
+use function Games\Even;
 
-$name = \Src\Cli\run();
-\Src\Even\even($name);
+\Games\Even\evenRun();

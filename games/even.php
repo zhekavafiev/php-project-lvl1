@@ -1,31 +1,25 @@
 <?php
 
-namespace Src\Even;
+namespace Games\Even;
 
 use function Src\Otvet;
-use function cli\prompt;
 use function cli\line;
+use function Src\Cli;
+use function Src\GamesFunctions;
 
-function even($name)
+
+
+function evenRun()
 {
+    $name = \Src\Cli\run();
     line("В данной игре тебе будет необходимо определить четность числа, ничего сложного.");
     line("Варианты ответов должны быть Yes или No, все остальные варианты будут некорректны");
     line("Начинаем!");
 
     $sum = 0;
-
-    for ($i = 1; $i <= 3; $i++) {
-        print_r("\nВопрос № {$i}.");
-        $number = rand(1, 100);
-        line("Это четное число %s?", $number);
-        //line("Варианты ответов Yes, No");
-        $otvet = prompt('');
-        //print_r($number);
-        if ($number % 2 === 0) {
-            $waitOtvet = 'Yes';
-        } else {
-            $waitOtvet = 'no';
-        }
+    $quontityQuestions = 3;
+    for ($i = 1; $i <= $quontityQuestions; $i++) {
+        [$otvet, $waitOtvet] = \Src\GamesFunctions\getAnswerEven($i);
         $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
     }   \Src\Otvet\close($sum, $name);//print_r($sum . "\n");
 }
