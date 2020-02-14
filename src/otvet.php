@@ -20,8 +20,11 @@ function result($otvet, $waitOtvet, $name)
 
 function close($sum, $name)
 {
+
     line("Спасибо за игру, $name!");
     line("Твоe количество правильных ответов - $sum ");
+
+
     if ($sum === 0) {
         line("Это очень плохой результат");
     } elseif ($sum === 1) {
