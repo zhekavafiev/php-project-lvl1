@@ -3,6 +3,8 @@
 namespace Games\Calc;
 
 use function Src\Cli;
+use function cli\prompt;
+use function cli\line;
 
 function greating()
 {
@@ -10,7 +12,7 @@ function greating()
     print_r("И так, поехали\n");
 }
 
-function getAnswerCalc($question)
+function getAnswerCalc() //функция описывающая всю игровую логику
 {
     $num1 = rand(1, 15);
     $num2 = rand(1, 25);
@@ -18,33 +20,35 @@ function getAnswerCalc($question)
 
     switch ($znak) {
         case 0:
-            print_r("{$question}. Каков будет результат операции {$num1}+{$num2}?");
+            $act = '+';
             $waitOtvet = $num1 + $num2;
-            $otvet = prompt('');
             break;
         case 1:
-            print_r("{$question}. Каков будет результат операции {$num1}-{$num2}?");
+            $act = '-';
             $waitOtvet = $num1 - $num2;
-            $otvet = prompt('');
             break;
         case 2:
-            print_r("{$question}. Каков будет результат операции {$num1}*{$num2}?");
+            $act = '*';
             $waitOtvet = $num1 * $num2;
-            $otvet = prompt('');
             break;
-    } return [$otvet, $waitOtvet];
+    }
+    return  [$waitOtvet, $num1, $num2, $act];
 }
 
-function calcRun()
+function calcRun()            //движок в котором будет вызываться игровой процесс
 {
-    $name = \Src\Cli\run();
-    greating();
+    $name = \Src\Cli\run();   //генерируем переменную $name для дальнейшего обращения по имени
+    greating();               // генерируем текст приветсвия и опиания игры
     $sum = 0;
     $quontityQuestions = 3;
 
     for ($i = 1; $i <= $quontityQuestions; $i++) {
-        [$otvet, $waitOtvet] = getAnswerCalc($i);
-        $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
-    } \Src\Otvet\close($sum, $name);
+        [$waitOtvet, $num1, $num2, $act] = getAnswerCalc();                   //генерация игровых данных, уникальные для каждой игры
+        line("{$i}. Каков будет результат операции {$num1}{$act}{$num2}?");   // Генерация вопроса на основании полученных данных, уникально для каждой игры
+        $otvet = prompt('');                                                   //получение ответа
+        $sum += \Src\Otvet\result($otvet, $waitOtvet, $name);                //подсчет суммы правильных ответов
+    } \Src\Otvet\close($sum, $name);                                          //на основании полученной суммы тест прощания
     //print_r($sum);$sum += \Src\Otvet\result($otvet, $waitOtvet, $name);
 }
+
+//calrRun();
