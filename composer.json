@@ -4,28 +4,26 @@
     "license": "MIT",
     "type": "project",
     "authors": [
-      {
+    {
         "name": "Evgeniy Vafiev",
         "email": "evgvfv@gmail.com"
-      }
+    }
     ],
     "bin": [
-		     "bin/brain-even",
-         "bin/brain-calc",
-         "bin/brain-gcd",
-         "bin/brain-prime",
-         "bin/brain-progression"
-	  ],
+		    "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-prime",
+        "bin/brain-progression"
+    ],
     "autoload":{
-     	  "files": [
-            "src/cli.php",
-            "games/even.php",
-            "src/otvet.php",
-            "games/calc.php",
-            "src/gamesFunctions.php",
-            "games/progression.php",
-            "games/prime.php",
-            "games/gcd.php"
+        "files": [
+            "src/games/calc.php",
+            "src/games/prime.php",
+            "src/games/even.php",
+            "src/games/gcd.php",
+            "src/games/progression.php",
+            "src/engine.php"
         ]
     },
     "require": {
