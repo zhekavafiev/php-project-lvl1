@@ -1,37 +1,48 @@
 <?php
 
-namespace Evgvfv\Games\Progression;
+namespace evgvfv\games\progression;
 
-use function Evgvfv\Engine;
+use function evgvfv\engine\run;
+use function evgvfv\engine\rules;
+use function evgvfv\engine\questions;
 
-function progression($quontity)
+use const evgvfv\engine\ROUNDS;
+
+function progression()
 {
-    $result = [];
-    $rules = 'В данном задании тебе необходимо определить какой число пропущено';
-    $result['rules'] = $rules;
+    $expectedAnswer = [];
 
-    for ($i = 1; $i <= $quontity; $i++) {
+    for ($i = 1; $i <= ROUNDS; $i++) {
+        $start = rand(1, 5);
+        $diff = rand(1, 5);
+        $progrssionLenght = 10;
+
         $arr = [];
-        $arr[0] = rand(1, 5);
-        $step = rand(1, 5);
-        $closeIndex = rand(0, 9);
+        $arr[0] = $start;
+        $closeIndex = rand(0, $progrssionLenght - 1);
 
-        for ($j = 1; $j <= 10; $j++) {
-            $arr[] = $arr[$j - 1] + $step;
+        for ($j = 1; $j < $progrssionLenght; $j++) {
+            $arr[$j] = $start + $j * $diff;
         }
 
-        $rightAnswer = $arr[$closeIndex];
+        $rightAnswer = $start + $closeIndex * $diff;
         $arr[$closeIndex] = 'X';
         $str = implode($arr, ' ');
-        $key = $str;
-        $result[$key] = $rightAnswer;
+        $expression = $str;
+        $expectedAnswer[$i] = [$rightAnswer, $expression];
     }
-    return $result;
+    return $expectedAnswer;
 }
 
 function progressionRun()
 {
-    $quontity = 3;
-    $progressionData = progression($quontity);
-    \Evgvfv\Engine\run($progressionData);
+    $expectedAnswer = [];
+    $expressionData = [];
+    foreach (progression() as $value) {
+        $expectedAnswer[] = $value[0];
+        $expressionData[] = $value[1];
+    }
+    $question = questions($expressionData, 'progression');
+    $rules = rules('progression');
+    run($expectedAnswer, $question, $rules);
 }

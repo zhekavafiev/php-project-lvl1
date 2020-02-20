@@ -1,31 +1,43 @@
 <?php
 
-namespace Evgvfv\Games\Gcd;
+namespace evgvfv\games\gcd;
 
-use function Evgvfv\Engine;
+use function evgvfv\engine\run;
+use function evgvfv\engine\rules;
+use function evgvfv\engine\questions;
 
-function gcd($quontity)
+use const evgvfv\engine\ROUNDS;
+
+function findGcd($num1, $num2)
 {
-    $rules = "В данной игре тебе будет нужно определить наибольший общий делитель двух чисел";
-    $result['rules'] = $rules;
+    for ($i = 1; $i <= $num2; $i++) {
+        if ($num1 % $i == 0 && $num2 % $i == 0) {
+            $result = $i;
+        }
+    }
+    return $result;
+}
 
-    for ($i = 1; $i <= $quontity; $i++) {
+function gcd()
+{
+    $expectedAnswer = [];
+    for ($i = 1; $i <= ROUNDS; $i++) {
         $num1 = rand(1, 30);
         $num2 = rand(1, 20);
-        $key = "{$i}. Какой наибольший общий делитель {$num1} и {$num2}?";
-        for ($j = 1; $j <= $num2; $j++) {
-            if ($num1 % $j == 0 && $num2 % $j == 0) {
-                $result[$key] = $j;
-            }
-        }
-    } return $result;
+        $expression = "{$num1} и {$num2}";
+        $expectedAnswer[$i][0] = [findGcd($num1, $num2), $expression];
+    } return $expectedAnswer;
 }
 
 function gcdRun()
 {
-    $quontity = 3;
-    $gcdData = gcd($quontity);
-    \Evgvfv\Engine\run($gcdData);
+    $expectedAnswer = [];
+    $expressionData = [];
+    foreach (gcd() as $value) {
+        $expectedAnswer[] = $value[0];
+        $expressionData[] = $value[1];
+    }
+    $rules = rules('gcd');
+    $question = questions($expressionData, 'gcd');
+    run($expectedAnswer, $question, $rules);
 }
-
-//gcdRun();

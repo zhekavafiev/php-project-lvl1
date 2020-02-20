@@ -1,29 +1,34 @@
 <?php
 
-namespace Evgvfv\Games\Even;
+namespace evgvfv\games\even;
 
-use function Evgvfv\Engine;
+use function evgvfv\engine\run;
+use function evgvfv\engine\rules;
+use function evgvfv\engine\questions;
 
-function even($quontity)
+use const evgvfv\engine\ROUNDS;
+
+function even()
 {
-    $rules = "В данной игре тебе будет необходимо определить четность числа (Yes/no)";
-    $result['rules'] = $rules;
-
-    for ($i = 1; $i <= $quontity; $i++) {
+    $expectedAnswer = [];
+    for ($i = 1; $i <= ROUNDS; $i++) {
         $num = rand(1, 100);
-        $key = "{$i}. {$num} - четное число?";
-        if ($num % 2 === 0) {
-            $result[$key] = 'Yes';
-        } else {
-            $result[$key] = 'No';
-        }
+        $expression = "{$num}";
+        $expectedAnswer[$i][0] = ($num % 2 === 0) ? 'Yes' : 'No';
+        $expectedAnswer[$i][1] = $expression;
     }
-    return $result;
+    return $expectedAnswer;
 }
 
 function evenRun()
 {
-    $quontity = 3;
-    $evenData = even($quontity);
-    \Evgvfv\Engine\run($evenData);
+    $expectedAnswer = [];
+    $expressionData = [];
+    foreach (even() as $value) {
+        $expectedAnswer[] = $value[0];
+        $expressionData[] = $value[1];
+    }
+    $rules = rules('even');
+    $question = questions($expressionData, 'even');
+    run($expectedAnswer, $question, $rules);
 }
