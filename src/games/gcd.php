@@ -8,6 +8,8 @@ use function evgvfv\engine\questions;
 
 use const evgvfv\engine\ROUNDS;
 
+const RULES = 'В данной игре тебе будет нужно определить наибольший общий делитель двух чисел';
+
 function findGcd($num1, $num2)
 {
     for ($i = 1; $i <= $num2; $i++) {
@@ -18,26 +20,19 @@ function findGcd($num1, $num2)
     return $result;
 }
 
-function gcd()
+function roundsGcdGenrate()
 {
     $expectedAnswer = [];
     for ($i = 1; $i <= ROUNDS; $i++) {
         $num1 = rand(1, 30);
         $num2 = rand(1, 20);
         $expression = "{$num1} и {$num2}";
-        $expectedAnswer[$i][0] = [findGcd($num1, $num2), $expression];
+        $expectedAnswer[$i] = [findGcd($num1, $num2), $expression];
     } return $expectedAnswer;
 }
 
 function gcdRun()
 {
-    $expectedAnswer = [];
-    $expressionData = [];
-    foreach (gcd() as $value) {
-        $expectedAnswer[] = $value[0];
-        $expressionData[] = $value[1];
-    }
-    $rules = rules('gcd');
-    $question = questions($expressionData, 'gcd');
-    run($expectedAnswer, $question, $rules);
+    $expectedAnswer = roundsGcdGenrate();
+    run($expectedAnswer, RULES);
 }

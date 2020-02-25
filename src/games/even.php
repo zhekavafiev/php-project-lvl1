@@ -8,13 +8,20 @@ use function evgvfv\engine\questions;
 
 use const evgvfv\engine\ROUNDS;
 
-function even()
+const RULES = 'В данной игре тебе будет необходимо определить четность числа (Yes/No)';
+
+function isEven($num)
+{
+    return ($num % 2 === 0);
+}
+
+function roundsEvenGenerate()
 {
     $expectedAnswer = [];
     for ($i = 1; $i <= ROUNDS; $i++) {
         $num = rand(1, 100);
         $expression = "{$num}";
-        $expectedAnswer[$i][0] = ($num % 2 === 0) ? 'Yes' : 'No';
+        $expectedAnswer[$i][0] = (isEven($num) === true) ? 'Yes' : 'No';
         $expectedAnswer[$i][1] = $expression;
     }
     return $expectedAnswer;
@@ -22,13 +29,6 @@ function even()
 
 function evenRun()
 {
-    $expectedAnswer = [];
-    $expressionData = [];
-    foreach (even() as $value) {
-        $expectedAnswer[] = $value[0];
-        $expressionData[] = $value[1];
-    }
-    $rules = rules('even');
-    $question = questions($expressionData, 'even');
-    run($expectedAnswer, $question, $rules);
+    $expectedAnswer = roundsEvenGenerate();
+    run($expectedAnswer, RULES);
 }

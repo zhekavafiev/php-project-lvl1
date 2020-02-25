@@ -7,53 +7,7 @@ use function cli\prompt;
 
 const ROUNDS = 3;
 
-function questions($expressionData, $gameType)
-{
-    for ($i = 0; $i < ROUNDS; $i++) {
-        switch ($gameType) {
-            case 'calc':
-                $question[] = "{$expressionData[$i]} - какой будет результат операции?";
-                break;
-            case 'even':
-                $question[] = "{$expressionData[$i]} - четное число?";
-                break;
-            case "gcd":
-                $question[] = "{$expressionData[$i]} - какой наибольший общий делитель ?";
-                break;
-            case 'prime':
-                $question[] = "{$expressionData[$i]} - является простым?";
-                break;
-            case 'progression':
-                $question[] = "{$expressionData[$i]}";
-                break;
-        }
-    }
-    return $question;
-}
-
-function rules($gameType)
-{
-    switch ($gameType) {
-        case 'calc':
-            $rules = 'В данном задании тебе необходимо вычислить значение простых математических выражений.';
-            break;
-        case 'even':
-            $rules = "В данной игре тебе будет необходимо определить четность числа (Yes/no)";
-            break;
-        case "gcd":
-            $rules = "В данной игре тебе будет нужно определить наибольший общий делитель двух чисел";
-            break;
-        case 'prime':
-            $rules = 'В данной игре вам необходимо дать ответ, является ли число простым.';
-            break;
-        case 'progression':
-            $rules = 'В данном задании тебе необходимо определить какой число пропущено';
-            break;
-    }
-    return $rules;
-}
-
-function run(array $gameData, $question, $rules)
+function run(array $gameData, $rules)
 {
     $arrData = $gameData;
     $sumAnswer = 0;
@@ -65,9 +19,9 @@ function run(array $gameData, $question, $rules)
     line('Предлагаю тебе сыграть в игру и проверить свой интеллект');
     line("{$rules}");
 //======== начинаем работу с массивом данных предоставленным игрой =============//
-    for ($i = 1; $i <= ROUNDS; $i++) {
-        line("{$i}. {$question[$i-1]}");
-        $expectedAnswer = $arrData[$i - 1];
+    foreach ($arrData as $key => $value) {
+        line("Вопрос {$key}: {$value[1]}");
+        $expectedAnswer = $value[0];
         $answer = prompt('Твой ответ');
         if ($answer == $expectedAnswer) {
             line("И это правильный ответ, {$name}!");

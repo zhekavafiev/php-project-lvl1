@@ -8,14 +8,16 @@ use function evgvfv\engine\questions;
 
 use const evgvfv\engine\ROUNDS;
 
-function calc()
+const RULES = 'В данном задании тебе необходимо вычислить значение простых математических выражений.';
+
+function roundsCalcGenerate()
 {
     $expectedAnswer = [];
     for ($i = 1; $i <= ROUNDS; $i++) {
         $num1 = rand(1, 15);
         $num2 = rand(1, 25);
-        $sign = rand(0, 2);
         $arrSign = ['+', '-', '*'];
+        $sign = rand(0, count($arrSign) - 1);
         $expression = "{$num1} {$arrSign[$sign]} {$num2}";
 
         switch ($sign) {
@@ -35,13 +37,6 @@ function calc()
 
 function calcRun()
 {
-    $expectedAnswer = [];
-    $expressionData = [];
-    foreach (calc() as $value) {
-        $expectedAnswer[] = $value[0];
-        $expressionData[] = $value[1];
-    }
-    $question = questions($expressionData, 'calc');
-    $rules = rules('calc');
-    run($expectedAnswer, $question, $rules);
+    $expectedAnswer = roundsCalcGenerate();
+    run($expectedAnswer, RULES);
 }

@@ -8,6 +8,8 @@ use function evgvfv\engine\questions;
 
 use const evgvfv\engine\ROUNDS;
 
+const RULES = 'В данной игре вам необходимо дать ответ, является ли число простым.';
+
 function isPrime($num)
 {
     $sumDeviders = 0;
@@ -19,7 +21,7 @@ function isPrime($num)
     return $sumDeviders === 0;
 }
 
-function prime()
+function roundsPrimeGenerate()
 {
     $expectedAnswer = [];
     for ($i = 1; $i <= ROUNDS; $i++) {
@@ -33,13 +35,6 @@ function prime()
 
 function primeRun()
 {
-    $expectedAnswer = [];
-    $expressionData = [];
-    foreach (prime() as $value) {
-        $expectedAnswer[] = $value[0];
-        $expressionData[] = $value[1];
-    }
-    $question = questions($expressionData, 'prime');
-    $rules = rules('prime');
-    run($expectedAnswer, $question, $rules);
+    $expectedAnswer = roundsPrimeGenerate();
+    run($expectedAnswer, RULES);
 }

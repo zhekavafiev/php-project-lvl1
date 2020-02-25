@@ -8,7 +8,9 @@ use function evgvfv\engine\questions;
 
 use const evgvfv\engine\ROUNDS;
 
-function progression()
+const RULES = 'В данном задании тебе необходимо определить какой число пропущено';
+
+function roundsProgressionGenerate()
 {
     $expectedAnswer = [];
 
@@ -36,13 +38,6 @@ function progression()
 
 function progressionRun()
 {
-    $expectedAnswer = [];
-    $expressionData = [];
-    foreach (progression() as $value) {
-        $expectedAnswer[] = $value[0];
-        $expressionData[] = $value[1];
-    }
-    $question = questions($expressionData, 'progression');
-    $rules = rules('progression');
-    run($expectedAnswer, $question, $rules);
+    $expectedAnswer = roundsProgressionGenerate();
+    run($expectedAnswer, RULES);
 }
