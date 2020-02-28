@@ -3,12 +3,10 @@
 namespace evgvfv\games\gcd;
 
 use function evgvfv\engine\run;
-use function evgvfv\engine\rules;
-use function evgvfv\engine\questions;
 
-use const evgvfv\engine\ROUNDS;
+use const evgvfv\engine\ROUNDS_COUNT;
 
-const RULES = 'В данной игре тебе будет нужно определить наибольший общий делитель двух чисел';
+const DESCRIPTION = 'В данной игре тебе будет нужно определить наибольший общий делитель двух чисел';
 
 function findGcd($num1, $num2)
 {
@@ -20,19 +18,19 @@ function findGcd($num1, $num2)
     return $result;
 }
 
-function roundsGcdGenrate()
+function generateRoundsGcd()
 {
-    $expectedAnswer = [];
-    for ($i = 1; $i <= ROUNDS; $i++) {
+    $gameData = [];
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num1 = rand(1, 30);
         $num2 = rand(1, 20);
         $expression = "{$num1} и {$num2}";
-        $expectedAnswer[$i] = [findGcd($num1, $num2), $expression];
-    } return $expectedAnswer;
+        $gameData[$i] = [findGcd($num1, $num2), $expression];
+    } return $gameData;
 }
 
-function gcdRun()
+function runGcd()
 {
-    $expectedAnswer = roundsGcdGenrate();
-    run($expectedAnswer, RULES);
+    $gameData = generateRoundsGcd();
+    run($gameData, DESCRIPTION);
 }

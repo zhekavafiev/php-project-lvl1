@@ -3,16 +3,18 @@
 namespace evgvfv\games\prime;
 
 use function evgvfv\engine\run;
-use function evgvfv\engine\rules;
-use function evgvfv\engine\questions;
 
-use const evgvfv\engine\ROUNDS;
+use const evgvfv\engine\ROUNDS_COUNT;
 
-const RULES = 'В данной игре вам необходимо дать ответ, является ли число простым.';
+const DESCRIPTION = 'В данной игре вам необходимо дать ответ, является ли число простым (варианты ответов - yes/no).';
 
 function isPrime($num)
 {
     $sumDeviders = 0;
+    if ($num < 2) {
+        return false;
+    }
+
     for ($i = 2; $i <= $num / 2; $i++) {
         if ($num % $i == 0) {
             $sumDeviders += 1;
@@ -21,20 +23,20 @@ function isPrime($num)
     return $sumDeviders === 0;
 }
 
-function roundsPrimeGenerate()
+function generateRoundsPrime()
 {
-    $expectedAnswer = [];
-    for ($i = 1; $i <= ROUNDS; $i++) {
+    $gameData = [];
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(2, 20);
         $expression = "{$num}";
-        $expectedAnswer[$i][0] = (isPrime($num) == true) ? 'Yes' : 'No';
-        $expectedAnswer[$i][1] = $expression;
+        $gameData[$i][0] = (isPrime($num) == true) ? 'yes' : 'no';
+        $gameData[$i][1] = $expression;
     }
-    return $expectedAnswer;
+    return $gameData;
 }
 
-function primeRun()
+function runPrime()
 {
-    $expectedAnswer = roundsPrimeGenerate();
-    run($expectedAnswer, RULES);
+    $gameData = generateRoundsPrime();
+    run($gameData, DESCRIPTION);
 }

@@ -3,32 +3,30 @@
 namespace evgvfv\games\even;
 
 use function evgvfv\engine\run;
-use function evgvfv\engine\rules;
-use function evgvfv\engine\questions;
 
-use const evgvfv\engine\ROUNDS;
+use const evgvfv\engine\ROUNDS_COUNT;
 
-const RULES = 'В данной игре тебе будет необходимо определить четность числа (Yes/No)';
+const DESCRIPTION = 'В данной игре тебе будет необходимо определить четность числа (арианты ответов - yes/no)';
 
 function isEven($num)
 {
     return ($num % 2 === 0);
 }
 
-function roundsEvenGenerate()
+function generateRoundsEven()
 {
-    $expectedAnswer = [];
-    for ($i = 1; $i <= ROUNDS; $i++) {
+    $gameData = [];
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(1, 100);
         $expression = "{$num}";
-        $expectedAnswer[$i][0] = (isEven($num) === true) ? 'Yes' : 'No';
-        $expectedAnswer[$i][1] = $expression;
+        $gameData[$i][0] = (isEven($num) === true) ? 'yes' : 'no';
+        $gameData[$i][1] = $expression;
     }
-    return $expectedAnswer;
+    return $gameData;
 }
 
-function evenRun()
+function runEven()
 {
-    $expectedAnswer = roundsEvenGenerate();
-    run($expectedAnswer, RULES);
+    $gameData = generateRoundsEven();
+    run($gameData, DESCRIPTION);
 }

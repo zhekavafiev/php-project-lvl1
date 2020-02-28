@@ -5,11 +5,11 @@ namespace evgvfv\engine;
 use function cli\line;
 use function cli\prompt;
 
-const ROUNDS = 3;
+const ROUNDS_COUNT = 3;
 
 function run(array $gameData, $rules)
 {
-    $arrData = $gameData;
+    //$arrData = $gameData;
     $sumAnswer = 0;
     $sumRightAnswer = 0;
 //=============================== Приветствие ==================================
@@ -19,7 +19,7 @@ function run(array $gameData, $rules)
     line('Предлагаю тебе сыграть в игру и проверить свой интеллект');
     line("{$rules}");
 //======== начинаем работу с массивом данных предоставленным игрой =============//
-    foreach ($arrData as $key => $value) {
+    foreach ($gameData as $key => $value) {
         line("Вопрос {$key}: {$value[1]}");
         $expectedAnswer = $value[0];
         $answer = prompt('Твой ответ');
