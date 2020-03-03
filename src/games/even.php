@@ -19,8 +19,8 @@ function generateRoundsEven()
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(1, 100);
         $expression = "{$num}";
-        $gameData[$i][0] = (isEven($num) === true) ? 'yes' : 'no';
-        $gameData[$i][1] = $expression;
+        $correctAnswer = (isEven($num) === true) ? 'yes' : 'no';
+        $gameData[$i] = [$correctAnswer, $expression];
     }
     return $gameData;
 }
