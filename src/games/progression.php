@@ -17,17 +17,17 @@ function generateRoundsProgression()
         $diff = rand(1, 5);
         $progrssionLenght = 10;
 
-        $numbers = [];
+        $prgression = [];
         $closeIndex = rand(0, $progrssionLenght - 1);
 
         for ($j = 0; $j < $progrssionLenght; $j++) {
-            $numbers[$j] = $start + $j * $diff;
+            $prgression[$j] = $start + $j * $diff;
         }
 
-        $rightAnswer = $start + $closeIndex * $diff;
-        $numbers[$closeIndex] = 'X';
-        $expression = implode($numbers, ' ');
-        $gameData[$i] = [$rightAnswer, $expression];
+        $correctAnswer = $start + $closeIndex * $diff;
+        $prgression[$closeIndex] = 'X';
+        $expression = implode($prgression, ' ');
+        $gameData[$i] = [$correctAnswer, $expression];
     }
     return $gameData;
 }

@@ -15,20 +15,20 @@ function generateRoundsCalc()
         $num1 = rand(1, 15);
         $num2 = rand(1, 25);
         $signs = ['+', '-', '*'];
-        $sign = $signs[rand(0, count($signs) - 1)];
+        $sign = $signs[array_rand($signs)];
         $expression = "{$num1} {$sign} {$num2} = ";
         switch ($sign) {
             case '+':
-                $rightAnswer = $num1 + $num2;
+                $correctAnswer = $num1 + $num2;
                 break;
             case '-':
-                $rightAnswer = $num1 - $num2;
+                $correctAnswer = $num1 - $num2;
                 break;
             case '*':
-                $rightAnswer = $num1 * $num2;
+                $correctAnswer = $num1 * $num2;
                 break;
         }
-        $gameData[$i] = [$rightAnswer, $expression];
+        $gameData[$i] = [$correctAnswer, $expression];
     }
     return $gameData;
 }

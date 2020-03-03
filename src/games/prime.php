@@ -28,9 +28,10 @@ function generateRoundsPrime()
     $gameData = [];
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(2, 20);
+        $correctAnswerYes = 'yes';
+        $correctAnswerNo = 'no';
         $expression = "{$num}";
-        $gameData[$i][0] = (isPrime($num) == true) ? 'yes' : 'no';
-        $gameData[$i][1] = $expression;
+        $gameData[$i] = (isPrime($num) == true) ? [$correctAnswerYes, $expression] : [$correctAnswerNo, $expression];
     }
     return $gameData;
 }
