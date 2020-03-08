@@ -31,7 +31,7 @@ function generateRoundsPrime()
         $correctAnswerYes = 'yes';
         $correctAnswerNo = 'no';
         $expression = "{$num}";
-        $correctAnswer = (isPrime($num)) ? $correctAnswerYes : $correctAnswerNo;
+        $correctAnswer = isPrime($num) ? $correctAnswerYes : $correctAnswerNo;
         $gameData[$i] = [$correctAnswer, $expression];
     }
     return $gameData;
