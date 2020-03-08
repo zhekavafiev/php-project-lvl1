@@ -26,7 +26,7 @@ function generateRoundsProgression()
 
         $correctAnswer = $start + $closeIndex * $diff;
         $progression[$closeIndex] = 'X';
-        $expression = implode($progression, ' ');
+        $expression = implode(' ', $progression);
         $gameData[$i] = [$correctAnswer, $expression];
     }
     return $gameData;
