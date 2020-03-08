@@ -9,18 +9,17 @@ const ROUNDS_COUNT = 3;
 
 function run(array $gameData, $description)
 {
-    //$arrData = $gameData;
     $answersCount = 0;
     $correctAnswersCount = 0;
-//=============================== Приветствие ==================================
+
     line('Добро пожаловать в игры разума!');
     $name = prompt('Как тебя зовут?');
     line('Привет, %s!', $name);
     line('Предлагаю тебе сыграть в игру и проверить свой интеллект');
     line("{$description}");
-//======== начинаем работу с массивом данных предоставленным игрой =============//
-    foreach ($gameData as $key => [$correctAnswer, $expression]) {
-        line("Вопрос {$key}: {$expression}");
+
+    foreach ($gameData as $questionNumber => [$correctAnswer, $expression]) {
+        line("Вопрос {$questionNumber}: {$expression}");
         $expectedAnswer = $correctAnswer;
         $answer = prompt('Твой ответ');
         if ($answer == $expectedAnswer) {
@@ -29,11 +28,10 @@ function run(array $gameData, $description)
             $correctAnswersCount += 1;
         } else {
             $answersCount += 1;
-            Line("Не верно, {$name}, правильный ответ %s!", $expectedAnswer);
+            line("Не верно, {$name}, правильный ответ %s!", $expectedAnswer);
         }
     }
-// ======================= конец работы с массивом ============================
-// ============= Подсчет процента правильных ответов и прощание ================
+
     line("Спасибо за игру, $name!");
     $percentOfCorrectAnswer = round($correctAnswersCount / $answersCount * 100, 0);
     line("Твой процент правильных ответов - $percentOfCorrectAnswer% ");

@@ -27,7 +27,8 @@
             "src/games/even.php",
             "src/games/gcd.php",
             "src/games/progression.php",
-            "src/engine.php"
+            "src/engine.php",
+            "src/autoload.php"
         ]
     },
     "require": {
