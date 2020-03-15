@@ -6,34 +6,34 @@ use function evgvfv\engine\run;
 
 use const evgvfv\engine\ROUNDS_COUNT;
 
-const DESCRIPTION = 'В данном задании тебе необходимо определить какой число пропущено';
+const DESCRIPTION = 'В данном задании тебе необходимо определить какой число пропущено.';
 
-function generateRoundsProgression()
+function generateGameData()
 {
     $gameData = [];
 
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $start = rand(1, 5);
         $diff = rand(1, 5);
-        $progrssionLenght = 10;
+        $progressionLenght = 10;
 
         $progression = [];
-        $closeIndex = rand(0, $progrssionLenght - 1);
+        $hiddenElemenrIndex = rand(0, $progressionLenght - 1);
 
-        for ($j = 0; $j < $progrssionLenght; $j++) {
+        for ($j = 0; $j < $progressionLenght; $j++) {
             $progression[$j] = $start + $j * $diff;
         }
 
-        $correctAnswer = $start + $closeIndex * $diff;
-        $progression[$closeIndex] = 'X';
-        $expression = implode(' ', $progression);
-        $gameData[$i] = [$correctAnswer, $expression];
+        $correctAnswer = $start + $hiddenElemenrIndex * $diff;
+        $progression[$hiddenElemenrIndex] = 'X';
+        $question = implode(' ', $progression);
+        $gameData[$i] = [$correctAnswer, $question];
     }
     return $gameData;
 }
 
 function runProgression()
 {
-    $gameData = generateRoundsProgression();
+    $gameData = generateGameData();
     run($gameData, DESCRIPTION);
 }

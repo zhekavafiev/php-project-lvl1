@@ -6,27 +6,27 @@ use function evgvfv\engine\run;
 
 use const evgvfv\engine\ROUNDS_COUNT;
 
-const DESCRIPTION = 'В данной игре тебе будет необходимо определить четность числа (арианты ответов - yes/no)';
+const DESCRIPTION = 'В данной игре тебе будет необходимо определить четность числа (варианты ответов - yes/no).';
 
 function isEven($num)
 {
     return ($num % 2 === 0);
 }
 
-function generateRoundsEven()
+function generateGameData()
 {
     $gameData = [];
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(1, 100);
-        $expression = "{$num}";
+        $question = "{$num}";
         $correctAnswer = isEven($num) ? 'yes' : 'no';
-        $gameData[$i] = [$correctAnswer, $expression];
+        $gameData[$i] = [$correctAnswer, $question];
     }
     return $gameData;
 }
 
 function runEven()
 {
-    $gameData = generateRoundsEven();
+    $gameData = generateGameData();
     run($gameData, DESCRIPTION);
 }

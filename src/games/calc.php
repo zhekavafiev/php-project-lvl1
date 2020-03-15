@@ -8,7 +8,7 @@ use const evgvfv\engine\ROUNDS_COUNT;
 
 const DESCRIPTION = 'В данном задании тебе необходимо вычислить значение простых математических выражений.';
 
-function generateRoundsCalc()
+function generateGameData()
 {
     $gameData = [];
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
@@ -16,7 +16,7 @@ function generateRoundsCalc()
         $num2 = rand(1, 25);
         $signs = ['+', '-', '*'];
         $sign = $signs[array_rand($signs)];
-        $expression = "{$num1} {$sign} {$num2} = ";
+        $question = "{$num1} {$sign} {$num2} = ";
         switch ($sign) {
             case '+':
                 $correctAnswer = $num1 + $num2;
@@ -28,13 +28,13 @@ function generateRoundsCalc()
                 $correctAnswer = $num1 * $num2;
                 break;
         }
-        $gameData[$i] = [$correctAnswer, $expression];
+        $gameData[$i] = [$correctAnswer, $question];
     }
     return $gameData;
 }
 
 function runCalc()
 {
-    $gameData = generateRoundsCalc();
+    $gameData = generateGameData();
     run($gameData, DESCRIPTION);
 }

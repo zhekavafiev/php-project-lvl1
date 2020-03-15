@@ -10,35 +10,32 @@ const DESCRIPTION = 'В данной игре вам необходимо дат
 
 function isPrime($num)
 {
-    $sumDeviders = 0;
     if ($num < 2) {
         return false;
     }
 
     for ($i = 2; $i <= $num / 2; $i++) {
         if ($num % $i == 0) {
-            $sumDeviders += 1;
+            return false;
         }
     }
-    return $sumDeviders === 0;
+    return true;
 }
 
-function generateRoundsPrime()
+function generateGameData()
 {
     $gameData = [];
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $num = rand(2, 20);
-        $correctAnswerYes = 'yes';
-        $correctAnswerNo = 'no';
-        $expression = "{$num}";
-        $correctAnswer = isPrime($num) ? $correctAnswerYes : $correctAnswerNo;
-        $gameData[$i] = [$correctAnswer, $expression];
+        $question = "{$num}";
+        $correctAnswer = isPrime($num) ? 'yes' : 'no';
+        $gameData[$i] = [$correctAnswer, $question];
     }
     return $gameData;
 }
 
 function runPrime()
 {
-    $gameData = generateRoundsPrime();
+    $gameData = generateGameData();
     run($gameData, DESCRIPTION);
 }

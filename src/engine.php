@@ -18,23 +18,22 @@ function run(array $gameData, $description)
     line('Предлагаю тебе сыграть в игру и проверить свой интеллект');
     line("{$description}");
 
-    foreach ($gameData as $questionNumber => [$correctAnswer, $expression]) {
-        line("Вопрос {$questionNumber}: {$expression}");
-        $expectedAnswer = $correctAnswer;
+    foreach ($gameData as $questionNumber => [$correctAnswer, $question]) {
+        line("Вопрос {$questionNumber}: {$question}");
         $answer = prompt('Твой ответ');
-        if ($answer == $expectedAnswer) {
+        if ($answer == $correctAnswer) {
             line("И это правильный ответ, {$name}!");
             $answersCount += 1;
             $correctAnswersCount += 1;
         } else {
             $answersCount += 1;
-            line("Не верно, {$name}, правильный ответ %s!", $expectedAnswer);
+            line("Не верно, {$name}, правильный ответ %s!", $correctAnswer);
         }
     }
 
     line("Спасибо за игру, $name!");
     $percentOfCorrectAnswer = round($correctAnswersCount / $answersCount * 100, 0);
-    line("Твой процент правильных ответов - $percentOfCorrectAnswer% ");
+    line("Твой процент правильных ответов - $percentOfCorrectAnswer%.");
 
     if ($percentOfCorrectAnswer < 30) {
         line("Это очень плохой результат");
